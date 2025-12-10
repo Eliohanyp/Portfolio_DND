@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negócios Digitais | Tecnologia que Transforma Florestas</title>
+    <meta name="description" content="Negócios Digitais - Especializada em desenvolvimento de tecnologia para o setor florestal. Soluções de IA, visão computacional e análise geoespacial.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo-link">
+                <img src="LOGO_BRANCA.png" alt="DEXCO - NEGOCIOS DIGITAIS" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato" class="btn-nav">Contato</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <!-- Video Background - Loop entre 3 vídeos -->
+        <!-- Vídeo 1 -->
+        <video class="hero-video-bg hero-video-active" id="video-01" muted playsinline preload="auto">
+            <source src="03.mp4" type="video/mp4">
+        </video>
+        <!-- Vídeo 2 -->
+        <video class="hero-video-bg" id="video-02" muted playsinline preload="auto">
+            <source src="01.mp4" type="video/mp4">
+        </video>
+        <!-- Vídeo 3 -->
+        <video class="hero-video-bg" id="video-03" muted playsinline preload="auto">
+            <source src="02.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <!-- Lottie Animation Background (opcional - você pode adicionar uma animação Lottie aqui) -->
+        <!-- 
+        <div class="hero-lottie" style="position: absolute; width: 100%; height: 100%; z-index: 0; opacity: 0.2;">
+            <lottie-player 
+                src="https://lottie.host/embed/your-animation.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: 100%;" 
+                loop 
+                autoplay>
+            </lottie-player>
+        </div>
+        -->
+        <div class="hero-content">
+            <div class="hero-text-wrapper">
+                <p class="hero-subtitle">Tecnologia Florestal de Nova Geração</p>
+                <h1 class="hero-title">
+                    Tecnologia que<br>
+                    <span class="gradient-text">Transforma Florestas</span>
+                </h1>
+                <div class="typewriter-wrapper">
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#produtos" class="btn btn-primary">
+                        Explorar Soluções
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contato" class="btn btn-secondary">
+                        Solicitar Demonstração
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products-section">
+        <div class="products-container">
+            <!-- Product showcases will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Sobre a Empresa</span>
+                <h2 class="section-title">Negócios Digitais</h2>
+                <p class="section-description">
+                    Especializada em desenvolvimento de tecnologia para o setor florestal, 
+                    unindo expertise em ciência de dados, visão computacional e análise geoespacial para 
+                    revolucionar a gestão florestal moderna.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Inteligência Artificial</h3>
+                    <p>Modelos avançados de deep learning e machine learning aplicados ao monitoramento e análise florestal.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visão Computacional</h3>
+                    <p>Processamento de imagens de drones e satélites com YOLO e OpenCV para detecção e análise automatizada.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Análise Geoespacial</h3>
+                    <p>Soluções Web GIS completas com processamento de dados espaciais e visualização interativa.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Análise de Dados</h3>
+                    <p>Pipelines de dados robustos com análise estatística multivariada e dashboards interativos.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Plataformas Mobile</h3>
+                    <p>Aplicativos offline-first para trabalho em campo com sincronização multi-dispositivo.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & IoT</h3>
+                    <p>Arquiteturas escaláveis em nuvem com integração de sensores e dispositivos IoT.</p>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h3 class="values-title">Nossos Valores</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <i class="fas fa-seedling"></i>
+                        <h4>Sustentabilidade</h4>
+                        <p>Tecnologia que promove práticas florestais sustentáveis</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Inovação</h4>
+                        <p>Soluções de ponta para os desafios do setor florestal</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Parceria</h4>
+                        <p>Trabalho conjunto para transformação digital do setor</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Excelência</h4>
+                        <p>Compromisso com qualidade e resultados mensuráveis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Entre em Contato</span>
+                <h2 class="section-title">Solicite uma Demonstração</h2>
+                <p class="section-description">
+                    Descubra como nossas soluções podem transformar sua operação florestal.
+                </p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>eliohan.poiati@dex.co</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>+55 (14) 99125-3400</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>Agudos, São Paulo, Brasil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="company" name="company" placeholder="Empresa">
+                    </div>
+                    <div class="form-group">
+                        <select id="product-interest" name="product-interest">
+                            <option value="">Selecione um produto de interesse</option>
+                            <option value="dx-forest">DX AI - Forest Vision</option>
+                            <option value="monitoring-adult-forests">Sistema de Classificação de Florestas Adultas</option>
+                            <option value="sujidade-cargas">Sistema de Monitoramento de Sujidade</option>
+                            <option value="melhoramento-genetico">Sistema de Análise de Melhoramento Genético</option>
+                            <option value="florestal-microplanejamento">Sistema de Microplanejamento Florestal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        Enviar Solicitação
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand-section">
+                    <img src="LOGO_BRANCA.png" alt="Negócios Digitais Logo" class="footer-logo">
+                    <p class="footer-description">
+                        Tecnologia de ponta para transformar a gestão florestal moderna. 
+                        Soluções inteligentes que conectam inovação e sustentabilidade.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Produtos</h5>
+                        <ul class="footer-link-list">
+                            <li><a href="#produtos">DX AI - Forest Vision</a></li>
+                            <li><a href="#produtos">Classificação de Florestas</a></li>
+                            <li><a href="#produtos">Monitoramento de Sujidade</a></li>
+                            <li><a href="#produtos">Melhoramento Genético</a></li>
+                            <li><a href="#produtos">Microplanejamento</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Empresa</h5>
+                        <ul class="footer-link-list">
+                            <li><a href="#sobre">Sobre Nós</a></li>
+                            <li><a href="#sobre">Nossa Missão</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><a href="#contato">Solicitar Demonstração</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Suporte</h5>
+                        <ul class="footer-link-list">
+                            <li><a href="#contato">Central de Ajuda</a></li>
+                            <li><a href="#contato">Documentação</a></li>
+                            <li><a href="#contato">FAQ</a></li>
+                            <li><a href="#contato">Suporte Técnico</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Contato</h5>
+                        <ul class="footer-contact-list">
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>eliohan.poiati@dex.co</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+55 (14) 99125-3400</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>São Paulo, Brasil</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-legal">
+                        <a href="#">Política de Privacidade</a>
+                        <span class="footer-separator">|</span>
+                        <a href="#">Termos de Uso</a>
+                        <span class="footer-separator">|</span>
+                        <a href="#">Cookies</a>
+                    </div>
+                    <p class="footer-copyright">
+                        &copy; 2025 DEXCO | Negócios Digitais. Todos os direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Request Modal -->
+    <div id="demo-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Solicitar Demonstração</h2>
+            <p>Preencha o formulário abaixo e nossa equipe entrará em contato em breve.</p>
+            <form id="demo-form">
+                <div class="form-group">
+                    <input type="text" id="demo-name" name="name" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="demo-email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="demo-phone" name="phone" placeholder="Telefone">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="demo-company" name="company" placeholder="Empresa">
+                </div>
+                <div class="form-group">
+                    <textarea id="demo-message" name="message" rows="4" placeholder="Mensagem"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Enviar Solicitação
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="productsData.js"></script>
+    <script>
+        // Make productsData globally available
+        if (typeof productsData !== 'undefined') {
+            window.productsData = productsData;
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

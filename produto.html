@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto | FLORESTA 4.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-detail-header {
+            height: 60vh;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 5% 4rem;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .product-detail-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+        
+        .product-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .nav-arrow {
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-arrow:hover {
+            background: var(--accent-green);
+            color: #000;
+            border-color: var(--accent-green);
+            transform: scale(1.1);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+        
+        .back-link:hover {
+            background: var(--accent-green);
+            color: #000;
+            border-color: var(--accent-green);
+            transform: translateX(-5px);
+        }
+        
+        .product-detail-content {
+            max-width: 1200px;
+            margin: -80px auto 0;
+            padding: 0 5% 6rem;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .product-detail-card {
+            background: var(--bg-black);
+            padding: 4rem;
+            border-radius: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        
+        .detail-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -2px;
+            color: var(--text-white);
+            text-align: center;
+        }
+        
+        .detail-tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .detail-tags {
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .detail-tags span {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-right: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .detail-section {
+            margin-bottom: 4rem;
+        }
+        
+        .detail-section h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        .detail-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: transparent;
+            padding: 2rem 0;
+            border-radius: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-bottom-color: var(--accent-green);
+            transform: translateX(10px);
+        }
+        
+        .feature-card i {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .benefits-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: 300;
+            font-size: 1.3rem;
+        }
+        
+        .cta-section {
+            background: transparent;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-top: 6rem;
+        }
+        
+        .cta-section h3 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+            letter-spacing: -2px;
+        }
+        
+        .cta-section p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--text-white);
+            padding: 1.2rem 3.5rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid var(--accent-green);
+        }
+        
+        .cta-button:hover {
+            background: var(--accent-green-light);
+            border-color: var(--accent-green-light);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-header {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .product-detail-card {
+                padding: 2rem;
+            }
+            
+            .product-nav {
+                padding: 0 1rem;
+            }
+            
+            .nav-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="LOGO_BRANCA.png" alt="FLORESTA 4.0 Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#contato" class="btn-nav">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="product-detail-header" id="detail-bg">
+        <div class="product-nav">
+            <a href="javascript:void(0)" id="prev-product" class="nav-arrow" title="Produto Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="javascript:void(0)" id="next-product" class="nav-arrow" title="Próximo Produto">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+            <a href="index.html#produtos" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar para Produtos
+            </a>
+            <div style="text-align: center;">
+                <h1 class="detail-title" id="detail-title">Carregando...</h1>
+                <p class="detail-tagline" id="detail-tagline"></p>
+                <div class="detail-tags" id="detail-tags"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-detail-content">
+        <div class="product-detail-card">
+            <!-- Description -->
+            <div class="detail-section">
+                <h3>Visão Geral</h3>
+                <p id="detail-description"></p>
+            </div>
+
+            <!-- Features -->
+            <div class="detail-section" id="features-section">
+                <h3>Principais Funcionalidades</h3>
+                <div class="features-grid" id="features-grid"></div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="detail-section" id="benefits-section">
+                <h3>Benefícios</h3>
+                <ul class="benefits-list" id="benefits-list"></ul>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="detail-section" id="usecases-section">
+                <h3>Casos de Uso</h3>
+                <p id="usecases-text"></p>
+            </div>
+
+            <!-- Gallery -->
+            <div class="detail-section" id="gallery-section">
+                <h3>Galeria</h3>
+                <div class="project-gallery" id="detail-gallery"></div>
+            </div>
+
+            <!-- Technical Solution -->
+            <div class="detail-section" id="technical-section">
+                <h3>Solução Técnica</h3>
+                <p id="detail-technical"></p>
+            </div>
+
+            <!-- Technologies -->
+            <div class="detail-section" id="technologies-section">
+                <h3>Tecnologias Utilizadas</h3>
+                <div class="technologies-grid" id="detail-technologies"></div>
+            </div>
+
+            <!-- Results -->
+            <div class="detail-section" id="results-section">
+                <h3>Resultados e Impacto</h3>
+                <p id="detail-results"></p>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>Pronto para Transformar sua Operação?</h3>
+                <p>Solicite uma demonstração personalizada e descubra como este produto pode revolucionar seu negócio florestal.</p>
+                <a href="index.html#contato" class="cta-button">
+                    Solicitar Demonstração
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="LOGO_BRANCA.png" alt="FLORESTA 4.0 Logo" class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produtos</h4>
+                        <ul>
+                            <li><a href="index.html#produtos">DX AI - Forest Vision</a></li>
+                            <li><a href="index.html#produtos">Classificação de Florestas</a></li>
+                            <li><a href="index.html#produtos">Monitoramento de Sujidade</a></li>
+                            <li><a href="index.html#produtos">Melhoramento Genético</a></li>
+                            <li><a href="index.html#produtos">Microplanejamento</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="index.html#sobre">Sobre Nós</a></li>
+                            <li><a href="index.html#contato">Contato</a></li>
+                            <li><a href="index.html#contato">Solicitar Demonstração</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FLORESTA 4.0. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev"><i class="fas fa-chevron-left"></i></span>
+        <span class="lightbox-next"><i class="fas fa-chevron-right"></i></span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="productsData.js"></script>
+    <script>
+        // Make productsData globally available
+        if (typeof productsData !== 'undefined') {
+            window.productsData = productsData;
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // Load product details
+        function loadProductDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            
+            if (!productId) {
+                console.error('Product ID not found');
+                return;
+            }
+            
+            // Use window.productsData or productsData
+            const data = window.productsData || (typeof productsData !== 'undefined' ? productsData : null);
+            if (!data) {
+                console.error('productsData not found');
+                return;
+            }
+            
+            const currentIndex = data.findIndex(p => p.id === productId);
+            const product = data[currentIndex];
+            
+            if (!product) {
+                document.getElementById('detail-title').innerText = "Produto não encontrado";
+                return;
+            }
+            
+            // Set header background
+            document.getElementById('detail-bg').style.backgroundImage = `url('${product.image}')`;
+            
+            // Set title and tagline
+            document.getElementById('detail-title').innerText = product.title;
+            document.getElementById('detail-tagline').innerText = product.tagline;
+            
+            // Set description
+            document.getElementById('detail-description').innerHTML = formatText(product.fullDescription);
+            
+            // Set tags
+            const tagsContainer = document.getElementById('detail-tags');
+            tagsContainer.innerHTML = '';
+            product.tags.slice(0, 6).forEach(tag => {
+                const span = document.createElement('span');
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+            
+            // Set features
+            const featuresGrid = document.getElementById('features-grid');
+            if (product.features && product.features.length > 0) {
+                featuresGrid.innerHTML = '';
+                product.features.forEach(feature => {
+                    const card = document.createElement('div');
+                    card.className = 'feature-card';
+                    card.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <h4>${feature}</h4>
+                    `;
+                    featuresGrid.appendChild(card);
+                });
+            } else {
+                document.getElementById('features-section').style.display = 'none';
+            }
+            
+            // Set benefits
+            const benefitsList = document.getElementById('benefits-list');
+            if (product.benefits && product.benefits.length > 0) {
+                benefitsList.innerHTML = '';
+                product.benefits.forEach(benefit => {
+                    const li = document.createElement('li');
+                    li.textContent = benefit;
+                    benefitsList.appendChild(li);
+                });
+            } else {
+                document.getElementById('benefits-section').style.display = 'none';
+            }
+            
+            // Set use cases
+            if (product.useCases && product.useCases.length > 0) {
+                const useCasesText = product.useCases.map((uc, idx) => `${idx + 1}. ${uc}`).join('<br>');
+                document.getElementById('usecases-text').innerHTML = useCasesText;
+            } else {
+                document.getElementById('usecases-section').style.display = 'none';
+            }
+            
+            // Set technical solution
+            if (product.technicalSolution) {
+                document.getElementById('detail-technical').innerHTML = formatText(product.technicalSolution);
+            } else {
+                document.getElementById('technical-section').style.display = 'none';
+            }
+            
+            // Set technologies
+            const techContainer = document.getElementById('detail-technologies');
+            if (product.technologies) {
+                techContainer.innerHTML = '';
+                Object.entries(product.technologies).forEach(([category, techs]) => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'tech-category';
+                    categoryDiv.innerHTML = `
+                        <h4>${category}</h4>
+                        <div class="tech-items">
+                            ${techs.map(tech => `<span class="tech-item">${tech}</span>`).join('')}
+                        </div>
+                    `;
+                    techContainer.appendChild(categoryDiv);
+                });
+            } else {
+                document.getElementById('technologies-section').style.display = 'none';
+            }
+            
+            // Set results
+            if (product.results) {
+                document.getElementById('detail-results').innerHTML = formatText(product.results);
+            } else {
+                document.getElementById('results-section').style.display = 'none';
+            }
+            
+            // Set gallery
+            const galleryContainer = document.getElementById('detail-gallery');
+            if (product.images && product.images.length > 0) {
+                galleryContainer.innerHTML = '';
+                product.images.forEach((img, index) => {
+                    const imgDiv = document.createElement('div');
+                    imgDiv.className = 'gallery-item';
+                    
+                    const imgUrl = typeof img === 'string' ? img : img.url;
+                    const imgTitle = product.imageTitles && product.imageTitles[index] 
+                        ? product.imageTitles[index] 
+                        : `Imagem ${index + 1}`;
+                    
+                    imgDiv.innerHTML = `
+                        <img src="${imgUrl}" alt="${product.title} - ${imgTitle}" loading="lazy" data-index="${index}">
+                        <div class="gallery-item-title">${imgTitle}</div>
+                    `;
+                    
+                    const imgElement = imgDiv.querySelector('img');
+                    imgElement.style.cursor = 'pointer';
+                    imgElement.addEventListener('click', () => {
+                        openLightbox(product.images, product.imageTitles || [], index);
+                    });
+                    
+                    galleryContainer.appendChild(imgDiv);
+                });
+            } else {
+                document.getElementById('gallery-section').style.display = 'none';
+            }
+            
+            // Navigation arrows
+            const totalProducts = data.length;
+            const prevIndex = (currentIndex - 1 + totalProducts) % totalProducts;
+            const nextIndex = (currentIndex + 1) % totalProducts;
+            
+            const prevBtn = document.getElementById('prev-product');
+            const nextBtn = document.getElementById('next-product');
+            if (prevBtn) prevBtn.href = `produto.html?id=${data[prevIndex].id}`;
+            if (nextBtn) nextBtn.href = `produto.html?id=${data[nextIndex].id}`;
+            
+            // Update page title
+            document.title = `${product.title} | FLORESTA 4.0`;
+        }
+        
+        function formatText(text) {
+            if (!text) return '';
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--accent-green);">$1</strong>');
+        }
+        
+        // Lightbox functions
+        let currentLightboxIndex = 0;
+        let lightboxImages = [];
+        let lightboxTitles = [];
+        
+        function openLightbox(images, titles, index) {
+            lightboxImages = images;
+            lightboxTitles = titles;
+            currentLightboxIndex = index;
+            
+            const modal = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            let imgUrl = typeof images[index] === 'string' ? images[index] : images[index].url;
+            let imgTitle = titles[index] || `Imagem ${index + 1}`;
+            
+            lightboxImg.src = imgUrl;
+            lightboxCaption.textContent = imgTitle;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            updateLightboxArrows();
+        }
+        
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        function showNextImage() {
+            if (lightboxImages.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+            updateLightboxImage();
+        }
+        
+        function showPrevImage() {
+            if (lightboxImages.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+            updateLightboxImage();
+        }
+        
+        function updateLightboxImage() {
+            const lightboxImg = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            let imgUrl = typeof lightboxImages[currentLightboxIndex] === 'string' 
+                ? lightboxImages[currentLightboxIndex] 
+                : lightboxImages[currentLightboxIndex].url;
+            let imgTitle = lightboxTitles[currentLightboxIndex] || `Imagem ${currentLightboxIndex + 1}`;
+            
+            lightboxImg.src = imgUrl;
+            lightboxCaption.textContent = imgTitle;
+            updateLightboxArrows();
+        }
+        
+        function updateLightboxArrows() {
+            const prevArrow = document.querySelector('.lightbox-prev');
+            const nextArrow = document.querySelector('.lightbox-next');
+            
+            if (lightboxImages.length <= 1) {
+                prevArrow.style.display = 'none';
+                nextArrow.style.display = 'none';
+            } else {
+                prevArrow.style.display = 'flex';
+                nextArrow.style.display = 'flex';
+            }
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for productsData to be available
+            const checkAndLoad = () => {
+                if (window.productsData || (typeof productsData !== 'undefined')) {
+                    loadProductDetails();
+                } else {
+                    console.log('Waiting for productsData...');
+                    setTimeout(checkAndLoad, 100);
+                }
+            };
+            checkAndLoad();
+            
+            const modal = document.getElementById('lightbox-modal');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
+            
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevImage(); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextImage(); });
+            
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeLightbox();
+                });
+            }
+            
+            document.addEventListener('keydown', (e) => {
+                if (modal && modal.style.display === 'flex') {
+                    if (e.key === 'Escape') closeLightbox();
+                    else if (e.key === 'ArrowLeft') showPrevImage();
+                    else if (e.key === 'ArrowRight') showNextImage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

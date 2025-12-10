@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Projeto | Eliohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo Específico para as Setas de Navegação */
+        .project-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            pointer-events: none; /* Permite clicar através da div container */
+            z-index: 10;
+        }
+
+        .nav-arrow {
+            pointer-events: auto; /* Reativa o clique nas setas */
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: var(--accent-green);
+            color: #000;
+            border-color: var(--accent-green);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .project-nav { padding: 0 1rem; }
+            .nav-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="detail-header" id="detail-bg">
+        <div class="hero-overlay"></div>
+        
+        <div class="project-nav">
+            <a href="#" id="prev-project" class="nav-arrow" title="Projeto Anterior"><i class="fas fa-chevron-left"></i></a>
+            <a href="#" id="next-project" class="nav-arrow" title="Próximo Projeto"><i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para Home</a>
+            <h1 id="detail-title" style="font-size: 3rem; font-weight: 900;">Carregando...</h1>
+            <div class="detail-tags" id="detail-tags" style="margin-top: 1rem;"></div>
+        </div>
+    </div>
+
+    <div class="detail-content">
+        <div class="detail-card">
+            <h3 style="margin-bottom: 1rem; color: var(--accent-green);">O Desafio</h3>
+            <p id="detail-desc" style="margin-bottom: 3rem; color: #ccc; line-height: 1.8;"></p>
+
+            <h3 style="margin-bottom: 1rem; color: var(--accent-blue);">A Solução Técnica</h3>
+            <p id="detail-tech" style="margin-bottom: 3rem; color: #ccc; line-height: 1.8;"></p>
+
+            <!-- Galeria de Imagens -->
+            <div id="gallery-section" style="margin-bottom: 3rem;">
+                <h3 style="margin-bottom: 1.5rem; color: var(--accent-purple);">Galeria do Projeto</h3>
+                <div id="detail-gallery" class="project-gallery"></div>
+            </div>
+
+            <!-- Arquitetura -->
+            <div id="architecture-section" style="margin-bottom: 3rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--accent-orange);">Arquitetura do Sistema</h3>
+                <p id="detail-architecture" style="color: #ccc; line-height: 1.8;"></p>
+            </div>
+
+            <!-- Tecnologias -->
+            <div id="technologies-section" style="margin-bottom: 3rem;">
+                <h3 style="margin-bottom: 1.5rem; color: var(--accent-green);">Tecnologias Utilizadas</h3>
+                <div id="detail-technologies" class="technologies-grid"></div>
+            </div>
+
+            <!-- Resultados -->
+            <div id="results-section" style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--accent-blue);">Resultados e Impacto</h3>
+                <p id="detail-results" style="color: #ccc; line-height: 1.8;"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content" style="justify-content: center;">
+            <p>© 2025 Eliohan Yamauti Poiati</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev"><i class="fas fa-chevron-left"></i></span>
+        <span class="lightbox-next"><i class="fas fa-chevron-right"></i></span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadProjectDetails);
+    </script>
+</body>
+</html>
