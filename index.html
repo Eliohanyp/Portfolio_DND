@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="video-config.js"></script>
 </head>
 <body>
 
@@ -35,17 +36,18 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <!-- Video Background - Loop entre 3 vídeos -->
+        <!-- URLs dos vídeos configuradas em video-config.js -->
         <!-- Vídeo 1 -->
         <video class="hero-video-bg hero-video-active" id="video-01" muted playsinline preload="auto">
-            <source src="03.mp4" type="video/mp4">
+            <source src="" type="video/mp4" id="video-source-01">
         </video>
         <!-- Vídeo 2 -->
         <video class="hero-video-bg" id="video-02" muted playsinline preload="auto">
-            <source src="01.mp4" type="video/mp4">
+            <source src="" type="video/mp4" id="video-source-02">
         </video>
         <!-- Vídeo 3 -->
         <video class="hero-video-bg" id="video-03" muted playsinline preload="auto">
-            <source src="02.mp4" type="video/mp4">
+            <source src="" type="video/mp4" id="video-source-03">
         </video>
         <div class="hero-video-overlay"></div>
         <!-- Lottie Animation Background (opcional - você pode adicionar uma animação Lottie aqui) -->
@@ -388,6 +390,22 @@
         // Make productsData globally available
         if (typeof productsData !== 'undefined') {
             window.productsData = productsData;
+        }
+        
+        // Carregar URLs dos vídeos do video-config.js
+        if (typeof videoConfig !== 'undefined') {
+            document.getElementById('video-source-01').src = videoConfig.video1;
+            document.getElementById('video-source-02').src = videoConfig.video2;
+            document.getElementById('video-source-03').src = videoConfig.video3;
+            
+            // Recarregar os vídeos com as novas URLs
+            const video1 = document.getElementById('video-01');
+            const video2 = document.getElementById('video-02');
+            const video3 = document.getElementById('video-03');
+            
+            if (video1) video1.load();
+            if (video2) video2.load();
+            if (video3) video3.load();
         }
     </script>
     <script src="script.js"></script>
