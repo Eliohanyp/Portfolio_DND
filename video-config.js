@@ -5,16 +5,18 @@
 const videoConfig = {
     // Vídeo 1 (03.mp4)
     // Formato correto: https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4
-    video1: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
+    video1: "https://res.cloudinary.com/dzs0rutgj/video/upload/01_dnl6s4.mp4",
     video2: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
-    video3: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
+    video3: "https://res.cloudinary.com/dzs0rutgj/video/upload/01_dnl6s4.mp4",
     video4: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
-    video5: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
+    video5: "https://res.cloudinary.com/dzs0rutgj/video/upload/01_dnl6s4.mp4",
+    video6: "https://res.cloudinary.com/dzs0rutgj/video/upload/03_o00xu1.mp4",
 
 };
 
 // Se você quiser usar vídeos do YouTube ou Vimeo, use o formato embed:
 // YouTube: "https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID"
 // Vimeo: "https://player.vimeo.com/video/VIDEO_ID?autoplay=1&mute=1&loop=1"
+
 
 
