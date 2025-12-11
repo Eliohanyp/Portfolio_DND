@@ -325,9 +325,18 @@ function initVideoBackground() {
         
         // Ativa e reproduz o próximo vídeo
         currentVideo.classList.add('hero-video-active');
-        currentVideo.play().catch(err => {
+        // Garante que o próximo vídeo tenha frame carregado antes de exibir
+        const tryPlay = () => currentVideo.play().catch(err => {
             console.log('Video play failed:', err);
         });
+
+        if (currentVideo.readyState >= 2) {
+            tryPlay();
+        } else {
+            // Força o carregamento para evitar tela preta ao trocar
+            currentVideo.load();
+            currentVideo.addEventListener('canplay', tryPlay, { once: true });
+        }
     }
     
     // Quando cada vídeo terminar, troca para o próximo
